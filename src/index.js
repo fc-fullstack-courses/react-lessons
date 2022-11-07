@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // const p = React.createElement('p', null, 'asdsafd');
 // const elems2 = React.createElement('div', { id: 'test' }, h1, p);
 
-const name = 'User';
+// const name = 'User';
 // root.render(<p>Hello, {name}</p>);
 // root.render(<p>2 + 2 = {2 + 2}</p>);
 // const isMale = false;
@@ -38,17 +38,46 @@ const user = {
 //   );
 // }
 
-class Header extends React.Component {
+// class Header extends React.Component {
+//   render() {
+//     return (
+//       <header>
+//         <h1>My site</h1>
+//         <img src={user.profilePicSrc} alt={user.name} />
+//       </header>
+//     );
+//   }
+// }
+
+function Greeting(props) {
+  const { name, id } = props;
+  // name = 'test';
+  return (
+    <p>
+      Hello, {name}-{id}
+    </p>
+  );
+}
+
+class Greeting2 extends React.Component {
+
   render() {
+    const { name, id } = this.props;
     return (
-      <header>
-        <h1>My site</h1>
-        <img src={user.profilePicSrc} alt={user.name} />
-      </header>
+      <p>
+        Hello, {name}-{id}
+      </p>
     );
   }
 }
 
 // root.render(React.createElement(Header));
 // root.render(<Header></Header>);
-root.render(<Header />);
+root.render(
+  <div>
+    <Greeting id="testId" name="Test" />
+    <Greeting name="User" />
+    <Greeting2 id="tesaffdsfd" name="Anton" />
+    <Greeting2 name={user.name} />
+  </div>
+);
