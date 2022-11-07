@@ -28,14 +28,25 @@ const user = {
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
 };
 
-function Header(props) {
+// function Header(props) {
 
-  return (
-    <header>
-      <h1>My site</h1>
-      <img src={user.profilePicSrc} alt={user.name} />
-    </header>
-  );
+//   return (
+//     <header>
+//       <h1>My site</h1>
+//       <img src={user.profilePicSrc} alt={user.name} />
+//     </header>
+//   );
+// }
+
+class Header extends React.Component {
+  render() {
+    return (
+      <header>
+        <h1>My site</h1>
+        <img src={user.profilePicSrc} alt={user.name} />
+      </header>
+    );
+  }
 }
 
 // root.render(React.createElement(Header));
