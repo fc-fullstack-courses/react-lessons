@@ -28,12 +28,16 @@ const user = {
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
 };
 
-root.render(
-  <img
-    src={user.profilePicSrc}
-    alt={user.name}
-    currentNumber={4}
-    disabled
-    // disabled={true}
-  />
-);
+function Header(props) {
+
+  return (
+    <header>
+      <h1>My site</h1>
+      <img src={user.profilePicSrc} alt={user.name} />
+    </header>
+  );
+}
+
+// root.render(React.createElement(Header));
+// root.render(<Header></Header>);
+root.render(<Header />);
