@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Aloha from './components/Aloha';
 import Greeting from './components/Greeting';
 import Header from './components/Header';
 
@@ -11,6 +12,7 @@ const user = {
 
 const admin = {
   id: 123,
+  name: 'Admin',
   role: 'admin',
 };
 
@@ -30,9 +32,8 @@ function App() {
 
   return (
     <>
-      {user.role === 'admin' && <Greeting name={user.name} />}
-      {admin.role === 'admin' && <Greeting name={admin.name || "Test" } />}
-      <input disabled={user.role === 'admin'} />
+      <Aloha name={user.name} />
+      <Aloha name={admin.name} />
     </>
   );
 }
