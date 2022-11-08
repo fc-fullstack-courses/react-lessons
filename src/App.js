@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
+import Greeting from './components/Greeting';
 import Header from './components/Header';
 
 function App() {
   return (
     <>
-      <p>123214</p>
-      <p>sdgfdgfgf</p>
+      <Greeting name="Anton" />
+      <Greeting />
     </>
   );
 }
