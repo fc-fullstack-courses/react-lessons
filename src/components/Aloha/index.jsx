@@ -8,6 +8,7 @@ class Aloha extends Component {
       test: 21345,
       isGreeting: true,
     };
+
   }
 
   handleClick = () => {
@@ -16,14 +17,13 @@ class Aloha extends Component {
     // v1
     this.setState({
       isGreeting: !this.state.isGreeting,
+      test: Math.random() * 100,
     });
   };
 
   render() {
     const { name } = this.props;
     const { isGreeting } = this.state;
-
-    console.log(this.state);
 
     return (
       <>

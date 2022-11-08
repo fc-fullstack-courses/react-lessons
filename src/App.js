@@ -16,26 +16,32 @@ const admin = {
   role: 'admin',
 };
 
-function App() {
-  // v1
-  // if (user.role === 'admin') {
-  //   return (
-  //     <>
-  //       <Greeting name="Anton" />
-  //       <Greeting />
-  //     </>
-  //   );
-  // }
+class App extends React.Component {
+  state = {
+    user: user,
+  };
 
-  // v2
-  // return admin.role === 'admin' && <Greeting />;
+  changeName = () => {
+    const newName = prompt('Enter new name');
 
-  return (
-    <>
-      <Aloha name={user.name} />
-      <Aloha name={admin.name} />
-    </>
-  );
+    const newUser = {
+      ...this.state.user,
+      name: newName,
+    };
+
+    this.setState({
+      user: newUser,
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <Aloha name={this.state.user.name} />
+        <button onClick={this.changeName}>Change user name</button>
+      </>
+    );
+  }
 }
 
 export default App;
