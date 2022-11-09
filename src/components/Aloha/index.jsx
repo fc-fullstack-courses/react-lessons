@@ -8,7 +8,6 @@ class Aloha extends Component {
       test: 21345,
       isGreeting: true,
     };
-
   }
 
   handleClick = () => {
@@ -21,19 +20,26 @@ class Aloha extends Component {
     });
   };
 
+  handleClick2 = () => {
+    const { makeFavorite, id } = this.props;
+    makeFavorite(id);
+  };
+
   render() {
-    const { name } = this.props;
+    const { name, sortUsers, makeFavorite, id } = this.props;
     const { isGreeting } = this.state;
 
     return (
-      <>
+      <div>
         <p>
           {isGreeting ? 'Hello' : 'Bye'}, {name}!
         </p>
-        <button id="btn" onClick={this.handleClick}>
+        <button id="btn" onClick={sortUsers}>
           Change mode
         </button>
-      </>
+        <button onClick={() => makeFavorite(id)}>Toggle favorite</button>
+        {/* <button onClick={this.handleClick2}>Toggle favorite</button> */}
+      </div>
     );
   }
 }
