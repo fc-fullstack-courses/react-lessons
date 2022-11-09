@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Aloha from './components/Aloha';
+import AlohaList from './components/AlohaList';
 import Greeting from './components/Greeting';
 import Header from './components/Header';
 
@@ -17,28 +18,10 @@ const admin = {
 };
 
 class App extends React.Component {
-  state = {
-    user: user,
-  };
-
-  changeName = () => {
-    const newName = prompt('Enter new name');
-
-    const newUser = {
-      ...this.state.user,
-      name: newName,
-    };
-
-    this.setState({
-      user: newUser,
-    });
-  };
-
   render() {
     return (
       <>
-        <Aloha name={this.state.user.name} />
-        <button onClick={this.changeName}>Change user name</button>
+        <AlohaList />
       </>
     );
   }
