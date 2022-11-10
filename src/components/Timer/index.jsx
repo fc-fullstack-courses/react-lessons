@@ -11,21 +11,30 @@ class Timer extends Component {
 
   decrementNumber = () => {
     const { number } = this.state;
-    this.setState({
-      number: number - 1,
-    });
+    if (number === 0) {
+      clearInterval(this.timerId);
+    } else {
+      this.setState({
+        number: number - 1,
+      });
+    }
   };
 
   componentDidMount() {
     console.log('Did Mount');
+
+    this.timerId = setInterval(this.decrementNumber, 1000);
   }
 
   componentDidUpdate() {
     console.log('Did update');
+    const { number } = this.state;
   }
 
   componentWillUnmount() {
     console.log('Will unmount');
+
+    clearInterval(this.timerId);
   }
 
   render() {
