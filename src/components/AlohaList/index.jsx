@@ -45,7 +45,7 @@ class AlohaList extends Component {
 
     const alohas = users.map((user) => (
       <li key={`${user.id}-${user.name}`}>
-        <Aloha id={user.id} name={user.name} makeFavorite={this.makeFavorite} />
+        <Aloha id={user.id} name={user.name} cb={this.makeFavorite} />
       </li>
     ));
     // отсеяли нефаворитов

@@ -26,7 +26,7 @@ class Aloha extends Component {
   };
 
   render() {
-    const { name, sortUsers, makeFavorite, id } = this.props;
+    const { name, sortUsers, cb, id } = this.props;
     const { isGreeting } = this.state;
 
     return (
@@ -37,7 +37,7 @@ class Aloha extends Component {
         <button id="btn" onClick={sortUsers}>
           Change mode
         </button>
-        <button onClick={() => makeFavorite(id)}>Toggle favorite</button>
+        <button onClick={() => cb(id)}>Toggle favorite</button>
         {/* <button onClick={this.handleClick2}>Toggle favorite</button> */}
       </div>
     );
