@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Aloha from '../Aloha';
-import FavoriteAlohas from '../FavoriteAlohas';
+import Aloha from './Aloha';
+import FavoriteAlohas from './FavoriteAlohas';
 
 class AlohaList extends Component {
   state = {
