@@ -17,8 +17,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <main>
-        <button onClick={this.handleClick}>Toggle isVisible</button>
+      <main className='container'>
+        <button className='btn' onClick={this.handleClick}>Toggle isVisible</button>
         {this.state.isVisible && <Timer />}
       </main>
     );
