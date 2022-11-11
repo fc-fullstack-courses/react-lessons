@@ -3,17 +3,22 @@ import './App.css';
 import Timer from './components/Timer';
 
 class App extends React.Component {
-  state = {
-    isVisible: true,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isVisible: true,
+    };
+
+    this.intervalId = null;
+  }
+
+  handleClick = () => this.setState({ isVisible: !this.state.isVisible });
+
   render() {
     return (
       <main>
-        <button
-          onClick={() => this.setState({ isVisible: !this.state.isVisible })}
-        >
-          Toggle isVisible
-        </button>
+        <button onClick={this.handleClick}>Toggle isVisible</button>
         {this.state.isVisible && <Timer />}
       </main>
     );
