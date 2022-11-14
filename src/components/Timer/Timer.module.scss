@@ -1,12 +1,15 @@
+@import '../../common/styles/variables';
+
 .btn {
-  background-color: lightblue;
+  background-color: $btn-bg-color;
+  color: $btn-color;
   padding: 15px 25px;
   border-radius: 20px;
   border: 2px solid black;
   margin-top: 10px;
 
   &:hover {
-    background-color: blue;
-    color: white;
+    background-color: $btn-bg-hover-color;
+    color: $btn-hover-color;
   }
 }
