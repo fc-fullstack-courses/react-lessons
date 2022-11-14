@@ -4,4 +4,9 @@
   border-radius: 20px;
   border: 2px solid black;
   margin-top: 10px;
+
+  &:hover {
+    background-color: blue;
+    color: white;
+  }
 }
