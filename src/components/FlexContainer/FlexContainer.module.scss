@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  width: 1000px;
+  height: 1000px;
+}
+
+.jcCenter {
+  justify-content: center;
+}
+
+.jcFlexStart {
+  justify-content: flex-start;
+}
+
+.aiCenter {
+  align-items: center;
+}

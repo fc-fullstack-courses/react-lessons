@@ -19,14 +19,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <main className="container">
+      <main>
         <List>
           <li>12323432</li>
           <li>123343</li>
           <li>dsadsad</li>
           <li>fdsdgd</li>
         </List>
-        <FlexContainer justContent="center" alignItems="flex-end">
+        <FlexContainer justContent="flex-start" alignItems="center">
           <span>1</span>
           <span>2</span>
           <span>3</span>

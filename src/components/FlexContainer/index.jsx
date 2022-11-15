@@ -1,4 +1,6 @@
 import React from 'react';
+import cx from 'classnames';
+import styles from './FlexContainer.module.scss';
 
 const FlexContainer = (props) => {
   const {
@@ -7,15 +9,17 @@ const FlexContainer = (props) => {
     alignItems = 'stretch',
   } = props;
 
-  const styles = {
-    display: 'flex',
-    justifyContent: justContent,
-    alignItems,
-    width: '1000px',
-    height: '1000px',
-  };
+  // const classes = `container jc-${justContent} ai-${alignItems}`;
 
-  return <div style={styles}>{children}</div>;
+  const isJCCenter = justContent === 'center';
+
+  const classes = cx(styles.container, {
+    [styles.jcCenter]: isJCCenter,
+    [styles.jcFlexStart]: justContent === 'flex-start',
+    [styles.aiCenter]: alignItems === 'center',
+  });
+
+  return <div className={classes}>{children}</div>;
 };
 
 export default FlexContainer;
