@@ -16,6 +16,7 @@ class App extends React.Component {
         id: 123235432,
         name: 'Test',
         src: 'shdnfdsfndsifds.jpg',
+        test: false,
       },
     };
 
@@ -40,7 +41,6 @@ class App extends React.Component {
         <Header
           headerProp1={true}
           headerProp2={42}
-          otherProp1={null}
           user={user}
           logout={this.logout}
         />
