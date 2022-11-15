@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-
-// function Header(props) {
-// const { user } = props;
-//   return (
-//     <header>
-//       <h1>My site</h1>
-//       <img src={user.profilePicSrc} alt={user.name} />
-//     </header>
-//   );
-// }
+import HeaderUserCard from './HeaderUserCard';
 
 class Header extends Component {
   render() {
-    const { user } = this.props;
+    const { haederProp1, headerProp2, otherProp1, ...userProps } = this.props;
+    const props = {
+      ...userProps,
+    };
+    // props.user
+    // props.logout
+
     return (
       <header>
         <h1>My site</h1>
-        {/* <img src={user.profilePicSrc} alt={user.name} /> */}
+        <HeaderUserCard {...userProps} />
       </header>
     );
   }

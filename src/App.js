@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import FlexContainer from './components/FlexContainer';
+import Header from './components/Header';
 import List from './components/List';
 import Timer from './components/Timer';
 
@@ -10,6 +11,12 @@ class App extends React.Component {
 
     this.state = {
       isVisible: true,
+
+      user: {
+        id: 123235432,
+        name: 'Test',
+        src: 'shdnfdsfndsifds.jpg',
+      },
     };
 
     this.intervalId = null;
@@ -17,23 +24,27 @@ class App extends React.Component {
 
   handleClick = () => this.setState({ isVisible: !this.state.isVisible });
 
+  logout = () => {
+    // по хорошему удаляет юзера
+    this.setState({
+      user: null,
+    });
+    alert('Вы вышли');
+  };
+
   render() {
+    const { user } = this.state;
+
     return (
-      <main>
-        <List>
-          <li>12323432</li>
-          <li>123343</li>
-          <li>dsadsad</li>
-          <li>fdsdgd</li>
-        </List>
-        <FlexContainer justContent="flex-start" alignItems="center">
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-        </FlexContainer>
-      </main>
+      <>
+        <Header
+          headerProp1={true}
+          headerProp2={42}
+          otherProp1={null}
+          user={user}
+          logout={this.logout}
+        />
+      </>
     );
   }
 }
