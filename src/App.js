@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import FlexContainer from './components/FlexContainer';
 import List from './components/List';
 import Timer from './components/Timer';
 
@@ -25,6 +26,13 @@ class App extends React.Component {
           <li>dsadsad</li>
           <li>fdsdgd</li>
         </List>
+        <FlexContainer justContent="center" alignItems="flex-end">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+        </FlexContainer>
       </main>
     );
   }
