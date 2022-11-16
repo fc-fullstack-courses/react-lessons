@@ -8,6 +8,7 @@ function signUp(userData) {
 const initialState = {
   email: '',
   password: '',
+  accountLevel: 'adv',
 };
 
 class SignUpForm extends Component {
@@ -43,7 +44,7 @@ class SignUpForm extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, accountLevel } = this.state;
     return (
       <form className={styles.form} onSubmit={this.submitHandler}>
         <input
@@ -60,6 +61,16 @@ class SignUpForm extends Component {
           value={password}
           onChange={this.handleChange}
         />
+        <select
+          className={styles.input}
+          name="accountLevel"
+          value={accountLevel}
+          onChange={this.handleChange}
+        >
+          <option value="basic">Basic</option>
+          <option value="adv">Advanced</option>
+          <option value="pro">Pro</option>
+        </select>
         <button className={styles.btn} type="submit">
           Sign Up
         </button>
