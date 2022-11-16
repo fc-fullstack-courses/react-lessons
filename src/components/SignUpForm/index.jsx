@@ -14,20 +14,13 @@ class SignUpForm extends Component {
     // console.log(e.target.password.value); // password
   };
 
-  handleEmailChange = (e) => {
-    // console.log(e.target.value);
-    this.setState({
-      email: e.target.value,
-    });
-  };
-
-  handlePasswordChange = (e) => {
+  handleChange = (e) => {
     const {
-      target: { value },
+      target: { value, name },
     } = e;
 
     this.setState({
-      password: value,
+      [name]: value,
     });
   };
 
@@ -40,14 +33,14 @@ class SignUpForm extends Component {
           type="email"
           name="email"
           value={email}
-          onChange={this.handleEmailChange}
+          onChange={this.handleChange}
         />
         <input
           className={styles.input}
           type="password"
           name="password"
           value={password}
-          onChange={this.handlePasswordChange}
+          onChange={this.handleChange}
         />
         <button className={styles.btn} type="submit">
           Sign Up
