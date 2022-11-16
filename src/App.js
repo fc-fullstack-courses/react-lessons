@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import FlexContainer from './components/FlexContainer';
 import Header from './components/Header';
+import HeaderUserCard from './components/Header/HeaderUserCard';
 import List from './components/List';
 import Timer from './components/Timer';
 
@@ -44,6 +45,7 @@ class App extends React.Component {
           user={user}
           logout={this.logout}
         />
+        <HeaderUserCard />
       </>
     );
   }

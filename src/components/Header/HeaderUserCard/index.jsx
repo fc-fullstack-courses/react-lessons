@@ -17,7 +17,7 @@ const HeaderUserCard = (props) => {
     </div>
   );
 };
-const userProps = PropTypes.shape({
+export const userProps = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
@@ -26,6 +26,15 @@ const userProps = PropTypes.shape({
 HeaderUserCard.propTypes = {
   logout: PropTypes.func.isRequired,
   user: userProps,
+};
+
+HeaderUserCard.defaultProps = {
+  user: {
+    id: 999999999999999999,
+    name: 'TEST USER PROP',
+    src: 'anon.jpg',
+  },
+  logout: () => alert('Provide normal props'),
 };
 
 export default HeaderUserCard;
