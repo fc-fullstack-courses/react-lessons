@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
 import styles from './SignUpForm.module.scss';
 
+function signUp(userData) {
+  console.log(`${userData.email} ${userData.password} is registered`);
+}
+
+const initialState = {
+  email: '',
+  password: '',
+};
+
 class SignUpForm extends Component {
-  state = {
-    email: '',
-    password: '',
-  };
+  state = structuredClone(initialState);
 
   submitHandler = (e) => {
+    const { email, password } = this.state;
     e.preventDefault();
 
     // console.log(e.target.elements.email.value); // email
     // console.log(e.target.password.value); // password
+    signUp({
+      email,
+      password,
+    });
+
+    // e.target.reset();
+
+    this.setState({
+      ...initialState,
+    });
   };
 
   handleChange = (e) => {
@@ -19,9 +36,10 @@ class SignUpForm extends Component {
       target: { value, name },
     } = e;
 
-    this.setState({
+    const newState = {
       [name]: value,
-    });
+    };
+    this.setState(newState);
   };
 
   render() {
