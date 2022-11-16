@@ -9,6 +9,8 @@ const initialState = {
   email: '',
   password: '',
   accountLevel: 'adv',
+  isAdult: false,
+  gender: 'female',
 };
 
 class SignUpForm extends Component {
@@ -34,17 +36,19 @@ class SignUpForm extends Component {
 
   handleChange = (e) => {
     const {
-      target: { value, name },
+      target: { value, name, type, checked },
     } = e;
 
+    const newValue = type === 'checkbox' ? checked : value;
+
     const newState = {
-      [name]: value,
+      [name]: newValue,
     };
     this.setState(newState);
   };
 
   render() {
-    const { email, password, accountLevel } = this.state;
+    const { email, password, accountLevel, isAdult, gender } = this.state;
     return (
       <form className={styles.form} onSubmit={this.submitHandler}>
         <input
@@ -71,7 +75,38 @@ class SignUpForm extends Component {
           <option value="adv">Advanced</option>
           <option value="pro">Pro</option>
         </select>
-        <button className={styles.btn} type="submit">
+
+        <label>
+          <input
+            type="checkbox"
+            name="isAdult"
+            checked={isAdult}
+            onChange={this.handleChange}
+          />{' '}
+          Are you an adult?
+        </label>
+        <p>Choose your gender</p>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            checked={gender === 'male'}
+            onChange={this.handleChange}
+          />{' '}
+          Male
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            checked={gender === 'female'}
+            onChange={this.handleChange}
+          />{' '}
+          Female
+        </label>
+        <button disabled={!isAdult} className={styles.btn} type="submit">
           Sign Up
         </button>
       </form>
