@@ -17,8 +17,18 @@ class SignUpForm extends Component {
   handleEmailChange = (e) => {
     // console.log(e.target.value);
     this.setState({
-      email: e.target.value
-    })
+      email: e.target.value,
+    });
+  };
+
+  handlePasswordChange = (e) => {
+    const {
+      target: { value },
+    } = e;
+
+    this.setState({
+      password: value,
+    });
   };
 
   render() {
@@ -32,7 +42,13 @@ class SignUpForm extends Component {
           value={email}
           onChange={this.handleEmailChange}
         />
-        <input className={styles.input} type="password" name="password" />
+        <input
+          className={styles.input}
+          type="password"
+          name="password"
+          value={password}
+          onChange={this.handlePasswordChange}
+        />
         <button className={styles.btn} type="submit">
           Sign Up
         </button>
