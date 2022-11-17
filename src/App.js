@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import SignUpForm from './components/SignUpForm';
@@ -42,10 +43,54 @@ class App extends React.Component {
           user={user}
           logout={this.logout}
         />
-        <SignUpForm />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+
+          <Route path="/about">
+            <About />
+          </Route>
+
+          <Route path="/contacts">
+            <Contacts />
+          </Route>
+        </Switch>
+        <Footer />
       </>
     );
   }
+}
+
+function Home() {
+  return (
+    <main>
+      <h1>Home page</h1>
+    </main>
+  );
+}
+function About() {
+  return (
+    <main>
+      <h1>About page</h1>
+    </main>
+  );
+}
+
+function Contacts() {
+  return (
+    <main>
+      <h1>Contacts page</h1>
+    </main>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <p>This is footer</p>
+    </footer>
+  );
 }
 
 export default App;
