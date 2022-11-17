@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
-import HeaderUserCard, { userProps } from './HeaderUserCard';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
-    const { headerProp1, headerProp2, ...userProps } = this.props;
-    const props = {
-      ...userProps,
-    };
-    // props.user
-    // props.logout
-
     return (
       <header>
-        <h1>My site</h1>
-        <HeaderUserCard {...userProps} />
+        <nav>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/contacts'>Contacts</Link></li>
+          </ul>
+        </nav>
       </header>
     );
   }
 }
-
-Header.propTypes = {
-  headerProp1: PropTypes.bool,
-  headerProp2: PropTypes.number,
-  logout: PropTypes.func.isRequired,
-  user: userProps,
-};
 
 export default Header;

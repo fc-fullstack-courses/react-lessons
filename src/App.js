@@ -37,12 +37,7 @@ class App extends React.Component {
 
     return (
       <>
-        <Header
-          headerProp1={true}
-          headerProp2={42}
-          user={user}
-          logout={this.logout}
-        />
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
 
@@ -52,9 +47,7 @@ class App extends React.Component {
             <Contacts />
           </Route>
 
-          <Route path='*'>
-            {() => <NotFoundPage />}
-          </Route>
+          <Route path="*">{() => <NotFoundPage />}</Route>
         </Switch>
         <Footer />
       </>
@@ -62,10 +55,12 @@ class App extends React.Component {
   }
 }
 
-function NotFoundPage () {
-  return  <main>
-  <h1>404</h1>
-</main>
+function NotFoundPage() {
+  return (
+    <main>
+      <h1>404</h1>
+    </main>
+  );
 }
 
 function Home() {
