@@ -55,6 +55,10 @@ class App extends React.Component {
           <Route path="/contacts">
             <Contacts />
           </Route>
+
+          <Route path='*'>
+            <NotFoundPage />
+          </Route>
         </Switch>
         <Footer />
       </>
