@@ -44,26 +44,28 @@ class App extends React.Component {
           logout={this.logout}
         />
         <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
+          <Route path="/" exact component={Home} />
 
-          <Route path="/about">
-            <About />
-          </Route>
+          <Route path="/about" render={() => <About />} />
 
           <Route path="/contacts">
             <Contacts />
           </Route>
 
           <Route path='*'>
-            <NotFoundPage />
+            {() => <NotFoundPage />}
           </Route>
         </Switch>
         <Footer />
       </>
     );
   }
+}
+
+function NotFoundPage () {
+  return  <main>
+  <h1>404</h1>
+</main>
 }
 
 function Home() {
