@@ -1,96 +1,30 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
-import SignUpForm from './components/SignUpForm';
+import AboutPage from './pages/About';
+import ContactsPage from './pages/ContactsPage';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isVisible: true,
-
-      user: {
-        id: 123235432,
-        name: 'Test',
-        src: 'shdnfdsfndsifds.jpg',
-        test: false,
-      },
-    };
-
-    this.intervalId = null;
-  }
-
-  handleClick = () => this.setState({ isVisible: !this.state.isVisible });
-
-  logout = () => {
-    // по хорошему удаляет юзера
-    this.setState({
-      user: null,
-    });
-    alert('Вы вышли');
-  };
-
-  render() {
-    const { user } = this.state;
-
-    return (
-      <>
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-
-          <Route path="/about" render={() => <About />} />
-
-          <Route path="/contacts">
-            <Contacts />
-          </Route>
-
-          <Route path="*">{() => <NotFoundPage />}</Route>
-        </Switch>
-        <Footer />
-      </>
-    );
-  }
-}
-
-function NotFoundPage() {
+function App() {
   return (
-    <main>
-      <h1>404</h1>
-    </main>
-  );
-}
+    <>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
 
-function Home() {
-  return (
-    <main>
-      <h1>Home page</h1>
-    </main>
-  );
-}
-function About() {
-  return (
-    <main>
-      <h1>About page</h1>
-    </main>
-  );
-}
+        <Route path="/about" render={() => <AboutPage />} />
 
-function Contacts() {
-  return (
-    <main>
-      <h1>Contacts page</h1>
-    </main>
-  );
-}
+        <Route path="/contacts">
+          <ContactsPage />
+        </Route>
 
-function Footer() {
-  return (
-    <footer>
-      <p>This is footer</p>
-    </footer>
+        <Route path="*">{() => <NotFoundPage />}</Route>
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
