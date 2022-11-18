@@ -8,7 +8,7 @@ class UsersLoader extends Component {
     currentPage: 1,
   };
 
-  componentDidMount() {
+  load = () => {
     const { currentPage } = this.state;
     this.setState({ isLoading: true });
     fetch(
@@ -31,32 +31,16 @@ class UsersLoader extends Component {
           isLoading: false,
         });
       });
+  };
+
+  componentDidMount() {
+    this.load();
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { currentPage } = this.state;
     if (currentPage !== prevState.currentPage) {
-      this.setState({ isLoading: true });
-      fetch(
-        `https://randomuser.me/api/?page=${currentPage}&results=10&seed=foobarbaz&nat=ua&inc=gender,name,location,email,login`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const { results } = data;
-          this.setState({
-            users: results,
-          });
-        })
-        .catch((error) => {
-          this.setState({
-            error: error.message,
-          });
-        })
-        .finally(() => {
-          this.setState({
-            isLoading: false,
-          });
-        });
+      this.load();
     }
   }
 
