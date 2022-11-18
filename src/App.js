@@ -7,6 +7,7 @@ import AboutPage from './pages/About';
 import ContactsPage from './pages/ContactsPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
+import UsersPage from './pages/UsersPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" exact component={HomePage} />
+        <Route path="/users" component={UsersPage} />
 
         <Route
           path="/about"
