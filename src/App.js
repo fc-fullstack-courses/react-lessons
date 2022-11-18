@@ -15,13 +15,20 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
 
-        <Route path="/about" render={() => <AboutPage />} />
+        <Route
+          path="/about"
+          render={(routeProps) => <AboutPage {...routeProps} />}
+        />
 
         <Route path="/contacts">
           <ContactsPage />
         </Route>
 
-        <Route path="*">{() => <NotFoundPage />}</Route>
+        <Route path="*">
+          {({ match, history, location }) => (
+            <NotFoundPage match={match} history={history} location={location} />
+          )}
+        </Route>
       </Switch>
       <Footer />
     </>
