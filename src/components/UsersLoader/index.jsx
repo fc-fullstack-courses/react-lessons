@@ -5,11 +5,15 @@ class UsersLoader extends Component {
     users: [],
     isLoading: false,
     error: null,
+    currentPage: 1,
   };
 
   componentDidMount() {
+    const { currentPage } = this.state;
     this.setState({ isLoading: true });
-    fetch('https://randomuser.me/api/')
+    fetch(
+      `https://randomuser.me/api/?page=${currentPage}&results=10&seed=foobarbaz&nat=ua&inc=gender,name,location,email,login`
+    )
       .then((res) => res.json())
       .then((data) => {
         const { results } = data;
@@ -29,11 +33,43 @@ class UsersLoader extends Component {
       });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { currentPage } = this.state;
+    if (currentPage !== prevState.currentPage) {
+      this.setState({ isLoading: true });
+      fetch(
+        `https://randomuser.me/api/?page=${currentPage}&results=10&seed=foobarbaz&nat=ua&inc=gender,name,location,email,login`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const { results } = data;
+          this.setState({
+            users: results,
+          });
+        })
+        .catch((error) => {
+          this.setState({
+            error: error.message,
+          });
+        })
+        .finally(() => {
+          this.setState({
+            isLoading: false,
+          });
+        });
+    }
+  }
+
   mapUsers = (user) => (
     <div key={user.login.uuid}>
       <pre>{JSON.stringify(user, undefined, 4)}</pre>
     </div>
   );
+
+  nextPage = () => {
+    const { currentPage } = this.state;
+    this.setState({ currentPage: currentPage + 1 });
+  };
 
   render() {
     const { users, isLoading, error } = this.state;
@@ -47,7 +83,12 @@ class UsersLoader extends Component {
       return <div>ERROR: {error}</div>;
     }
 
-    return <div>{usersList}</div>;
+    return (
+      <div>
+        <button onClick={this.nextPage}>Next page</button>
+        {usersList}
+      </div>
+    );
   }
 }
 
