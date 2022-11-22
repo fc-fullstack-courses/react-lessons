@@ -13,14 +13,17 @@ import UsersPage from './pages/UsersPage';
 
 export const ProductContext = React.createContext();
 
+// создайте контекст, позволяющий менять тему приложения
+// пускай будут 2 темы, какая-то стоит по умолчанию (в каком то стейте сидит)
+// 'light', 'dark'
+// в вложенном комопненте приймите єти данные з конткеста 
+// и по условию замените стили
 function App() {
   const [product, setProduct] = useState({
     id: 5,
     name: 'Mobila',
     price: 1000,
   });
-
-  console.log(ProductContext);
 
   return (
     <ProductContext.Provider value={product}>
