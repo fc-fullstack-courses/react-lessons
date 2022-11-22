@@ -19,6 +19,12 @@ export const ThemeContext = React.createContext();
 // 'light', 'dark'
 // в вложенном комопненте приймите єти данные з конткеста
 // и по условию замените стили
+
+export const THEMES = {
+  LIGHT: 'light',
+  DARK: 'dark',
+};
+
 class App extends React.Component {
   state = {
     product: {
@@ -26,14 +32,22 @@ class App extends React.Component {
       name: 'Mobila',
       price: 1000,
     },
-    theme: 'light',
+    theme: THEMES.LIGHT,
+  };
+
+  changeTheme = () => {
+    const { theme } = this.state;
+
+    this.setState({
+      theme: theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
+    });
   };
 
   render() {
     const { product, theme } = this.state;
     return (
       <ProductContext.Provider value={product}>
-        <ThemeContext.Provider value={theme}>
+        <ThemeContext.Provider value={[theme, this.changeTheme]}>
           <Header />
 
           <Tree />
