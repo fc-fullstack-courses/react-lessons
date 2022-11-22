@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Tree from './components/Tree';
+import { ProductContext, ThemeContext } from './contexts';
 import AboutPage from './pages/About';
 import ContactsPage from './pages/ContactsPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import PostsPage from './pages/PostsPage';
 import UsersPage from './pages/UsersPage';
-
-export const ProductContext = React.createContext();
-export const ThemeContext = React.createContext();
 
 // создайте контекст, позволяющий менять тему приложения
 // пускай будут 2 темы, какая-то стоит по умолчанию (в каком то стейте сидит)

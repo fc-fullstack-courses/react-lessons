@@ -1,5 +1,6 @@
 import React from 'react';
-import { ProductContext, ThemeContext, THEMES } from '../../../App';
+import { THEMES } from '../../../App';
+import { ProductContext, ThemeContext } from '../../../contexts';
 
 const SomeArticle = (props) => {
   // const styles = {
