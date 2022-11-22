@@ -1,12 +1,16 @@
 import React from 'react';
+import { ProductContext } from '../../../App';
 
-const SomeArticle = ({ product }) => {
-  return (
+const SomeArticle = (props) => {
+  
+  const renderFunc = (contextValue) => (
     <article>
       <h5>Article</h5>
-      <div>{JSON.stringify(product)}</div>
+      <div>{JSON.stringify(contextValue)}</div>
     </article>
   );
+
+  return <ProductContext.Consumer>{renderFunc}</ProductContext.Consumer>;
 };
 
 export default SomeArticle;

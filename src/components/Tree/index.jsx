@@ -5,7 +5,7 @@ const Tree = (props) => {
   return (
     <div>
       <h1>Tree</h1>
-      <TopLevel product={props.product} />
+      <TopLevel />
     </div>
   );
 };

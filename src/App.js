@@ -11,6 +11,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import PostsPage from './pages/PostsPage';
 import UsersPage from './pages/UsersPage';
 
+export const ProductContext = React.createContext();
+
 function App() {
   const [product, setProduct] = useState({
     id: 5,
@@ -18,10 +20,14 @@ function App() {
     price: 1000,
   });
 
+  console.log(ProductContext);
+
   return (
-    <>
+    <ProductContext.Provider value={product}>
       <Header />
-      <Tree product={product} />
+
+      <Tree />
+
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/users" component={UsersPage} />
@@ -43,7 +49,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-    </>
+    </ProductContext.Provider>
   );
 }
 

@@ -5,7 +5,7 @@ const MiddleLevel = (props) => {
   return (
     <div>
       <h3>Middle level</h3>
-      <BottomLevel  product={props.product}/>
+      <BottomLevel />
     </div>
   );
 };
