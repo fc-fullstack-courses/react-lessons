@@ -1,6 +1,7 @@
 import React from 'react';
-import { THEMES } from '../../../App';
 import { ProductContext, ThemeContext } from '../../../contexts';
+import CONSTANTS from '../../../constants'; 
+const { THEMES } = CONSTANTS;
 
 const SomeArticle = (props) => {
   // const styles = {

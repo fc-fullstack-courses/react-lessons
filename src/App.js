@@ -11,17 +11,14 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import PostsPage from './pages/PostsPage';
 import UsersPage from './pages/UsersPage';
+import CONSTANTS from './constants';
+const { THEMES } = CONSTANTS;
 
 // создайте контекст, позволяющий менять тему приложения
 // пускай будут 2 темы, какая-то стоит по умолчанию (в каком то стейте сидит)
 // 'light', 'dark'
 // в вложенном комопненте приймите єти данные з конткеста
 // и по условию замените стили
-
-export const THEMES = {
-  LIGHT: 'light',
-  DARK: 'dark',
-};
 
 class App extends React.Component {
   state = {
