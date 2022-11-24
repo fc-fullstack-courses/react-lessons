@@ -1,4 +1,4 @@
-function AboutPage() {
+function AboutPage(props) {
   return (
     <main>
       <h1>About page</h1>
