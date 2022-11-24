@@ -4,7 +4,7 @@ import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Tree from './components/Tree';
-import { ProductContext, ThemeContext } from './contexts';
+import { ProductContext, ThemeContext, UserContext } from './contexts';
 import AboutPage from './pages/About';
 import ContactsPage from './pages/ContactsPage';
 import HomePage from './pages/HomePage';
@@ -28,6 +28,11 @@ class App extends React.Component {
       price: 1000,
     },
     theme: THEMES.LIGHT,
+    user: {
+      id: 44546546,
+      name: 'Test Testenko',
+      src: 'https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png',
+    },
   };
 
   changeTheme = () => {
@@ -39,40 +44,42 @@ class App extends React.Component {
   };
 
   render() {
-    const { product, theme } = this.state;
+    const { product, theme, user } = this.state;
     return (
       <ProductContext.Provider value={product}>
-        <ThemeContext.Provider value={[theme, this.changeTheme]}>
-          <Header />
+        <UserContext.Provider value={user}>
+          <ThemeContext.Provider value={[theme, this.changeTheme]}>
+            <Header />
 
-          <Tree />
+            <Tree />
 
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/users" component={UsersPage} />
-            <Route path="/posts" component={PostsPage} />
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/users" component={UsersPage} />
+              <Route path="/posts" component={PostsPage} />
 
-            <Route
-              path="/about"
-              render={(routeProps) => <AboutPage {...routeProps} />}
-            />
+              <Route
+                path="/about"
+                render={(routeProps) => <AboutPage {...routeProps} />}
+              />
 
-            <Route path="/contacts">
-              <ContactsPage />
-            </Route>
+              <Route path="/contacts">
+                <ContactsPage />
+              </Route>
 
-            <Route path="*">
-              {({ match, history, location }) => (
-                <NotFoundPage
-                  match={match}
-                  history={history}
-                  location={location}
-                />
-              )}
-            </Route>
-          </Switch>
-          <Footer />
-        </ThemeContext.Provider>
+              <Route path="*">
+                {({ match, history, location }) => (
+                  <NotFoundPage
+                    match={match}
+                    history={history}
+                    location={location}
+                  />
+                )}
+              </Route>
+            </Switch>
+            <Footer />
+          </ThemeContext.Provider>
+        </UserContext.Provider>
       </ProductContext.Provider>
     );
   }

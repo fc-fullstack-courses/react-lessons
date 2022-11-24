@@ -18,11 +18,11 @@ const SomeArticle = (props) => {
 
         return (
           <ProductContext.Consumer>
-            {(contextValue) => (
+            {(product) => (
               <article style={styles}>
                 <h5>Article</h5>
                 <button onClick={onClick}>Change Theme</button>
-                <div>{JSON.stringify(contextValue)}</div>
+                <div>{JSON.stringify(product)}</div>
               </article>
             )}
           </ProductContext.Consumer>
