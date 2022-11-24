@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductContext, ThemeContext } from '../../../contexts';
+import { withProduct, withTheme } from '../../../hocs';
 import CONSTANTS from '../../../constants';
 const { THEMES } = CONSTANTS;
 
@@ -18,26 +18,6 @@ const SomeArticle = (props) => {
     </article>
   );
 };
-
-
-function withProduct(Component) {
-  function NewComponent(props) {
-    return (
-      <ProductContext.Consumer>
-        {(product) => <Component product={product} {...props}/>}
-      </ProductContext.Consumer>
-    );
-  }
-
-  return NewComponent;
-}
-
-const withTheme = (Component) => (props) =>
-  (
-    <ThemeContext.Consumer>
-      {([theme, onClick]) => <Component theme={theme} onClick={onClick} {...props}/>}
-    </ThemeContext.Consumer>
-  );
 
 // const SomeArticleWithProduct = withProduct(SomeArticle);
 // const SomeArticleWithAll = withTheme(SomeArticleWithProduct);
