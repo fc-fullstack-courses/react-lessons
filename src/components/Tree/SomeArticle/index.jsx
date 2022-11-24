@@ -1,6 +1,6 @@
 import React from 'react';
-import { withProduct, withTheme } from '../../../hocs';
-import CONSTANTS from '../../../constants';
+import { withProduct, withTheme } from 'hocs';
+import CONSTANTS from 'constants';
 const { THEMES } = CONSTANTS;
 
 const SomeArticle = (props) => {
