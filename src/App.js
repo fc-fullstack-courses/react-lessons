@@ -12,6 +12,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import PostsPage from './pages/PostsPage';
 import UsersPage from './pages/UsersPage';
 import CONSTANTS from './constants';
+import userSrc from './img/user.png';
+
 const { THEMES } = CONSTANTS;
 
 // создайте контекст, позволяющий менять тему приложения
@@ -31,7 +33,7 @@ class App extends React.Component {
     user: {
       id: 44546546,
       name: 'Test Testenko',
-      src: 'https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png',
+      src: userSrc,
     },
   };
 
