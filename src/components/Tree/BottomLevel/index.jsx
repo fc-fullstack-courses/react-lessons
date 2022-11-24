@@ -5,7 +5,7 @@ const BottomLevel = (props) => {
   return (
     <div>
       <h4>BottomLevel</h4>
-      <SomeArticle />
+      <SomeArticle test="test prop"/>
     </div>
   );
 };
