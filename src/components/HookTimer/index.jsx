@@ -1,17 +1,35 @@
 import React, { useState } from 'react';
 
 const Timer = (props) => {
-  // const [state, setState] = useState({ count: 0, startingNumber: 0 });
-  const [startingNumber, setStartingNumber] = useState(0);
+  const [startingNumber, setStartingNumber] = useState(10);
   const [currentNumber, setCurrentNumber] = useState(0);
+  const [isStarted, setIsStarted] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
 
   const handleChange = (e) => {
     const {
       target: { value },
     } = e;
 
-    // setState({ ...state, startingNumber: value });
-    setStartingNumber(value);
+    setStartingNumber(+value);
+  };
+
+  const start = () => {
+    if (!isStarted) {
+      setIsStarted(true);
+      setCurrentNumber(startingNumber);
+      const intervalId = setInterval(tick, 1000);
+      setIntervalId(intervalId);
+    }
+  };
+
+  const stop = () => {
+    clearInterval(intervalId);
+    setIsStarted(false);
+  };
+
+  const tick = () => {
+    setCurrentNumber((oldCurrentNumber) => oldCurrentNumber - 1);
   };
 
   return (
@@ -19,8 +37,8 @@ const Timer = (props) => {
       <p>Starting number : {startingNumber}</p>
       <p>Current number : {currentNumber}</p>
       <input type="text" value={startingNumber} onChange={handleChange} />
-      <button>Start Timer</button>
-      <button>Stop Timer</button>
+      <button onClick={start}>Start Timer</button>
+      <button onClick={stop}>Stop Timer</button>
     </div>
   );
 };
