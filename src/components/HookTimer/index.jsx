@@ -6,19 +6,30 @@ const Timer = (props) => {
   const [isStarted, setIsStarted] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
 
+  // загрузка пользователя
   useEffect(function effect() {
     // console.log('useEffect');
     console.log('did mount + did update');
 
     // let intervalId = setInterval(tick, 1000);
-    document.addEventListener('click', handleClick);
+    // document.addEventListener('click', handleClick);
 
     return function cleanup() {
       console.log('Will unmount');
       // clearInterval(intervalId);
-      document.removeEventListener('click', handleClick);
+      // document.removeEventListener('click', handleClick);
     };
   });
+
+  // интервал
+  useEffect(() => {
+    console.log(currentNumber);
+  }, [currentNumber, startingNumber]);
+
+  useEffect(() => {
+    console.log('Did mount ?');
+    return () => {};
+  }, []);
 
   const handleClick = () => {
     console.log('click');
