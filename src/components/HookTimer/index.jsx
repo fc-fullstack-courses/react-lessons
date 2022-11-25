@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Timer = (props) => {
   const [startingNumber, setStartingNumber] = useState(10);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
+
+  useEffect(function effect() {
+    // console.log('useEffect');
+    console.log('did mount + did update');
+
+    // let intervalId = setInterval(tick, 1000);
+    document.addEventListener('click', handleClick);
+
+    return function cleanup() {
+      console.log('Will unmount');
+      // clearInterval(intervalId);
+      document.removeEventListener('click', handleClick);
+    };
+  });
+
+  const handleClick = () => {
+    console.log('click');
+  };
 
   const handleChange = (e) => {
     const {
