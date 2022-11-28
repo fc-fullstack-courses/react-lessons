@@ -1,5 +1,5 @@
 import React from 'react';
-import SomeArticle from '../SomeArticle';
+import SomeArticle from '../SomeArticle/SomeArticleHooks';
 
 const BottomLevel = (props) => {
   return (
