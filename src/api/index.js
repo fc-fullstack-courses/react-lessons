@@ -23,3 +23,9 @@ export function getUsers(options) {
 
   return promise;
 }
+
+export function getOtherUsers() {
+  return fetch('https://jsonplaceholder.typicode.com/users').then((res) =>
+    res.json()
+  );
+}
