@@ -29,3 +29,9 @@ export function useData(getData) {
 
   return { data, isLoading, error };
 }
+
+/*
+  Создайте хук useClicker
+  обработчик на клики вешайте на document
+  
+*/
