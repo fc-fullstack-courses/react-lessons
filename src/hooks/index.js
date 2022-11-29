@@ -33,5 +33,15 @@ export function useData(getData) {
 /*
   Создайте хук useClicker
   обработчик на клики вешайте на document
-  
 */
+export function useClicker() {
+  const [clicks, setClicks] = useState(0);
+  const clicksListener = () => setClicks((clicksState) => clicksState + 1);
+  useEffect(() => {
+    document.addEventListener('click', clicksListener);
+    return () => {
+      document.removeEventListener('click', clicksListener);
+    };
+  });
+  return clicks;
+}

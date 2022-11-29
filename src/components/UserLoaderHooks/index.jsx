@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useData } from 'hooks';
+import { useData, useClicker } from 'hooks';
 import * as API from 'api';
 
 const UsersLoader = (props) => {
   const { data: users, isLoading, error } = useData(API.getOtherUsers);
+  const clicks = useClicker();
 
   const userList = users.map((user) => (
     <article key={user.id}>
@@ -16,6 +17,7 @@ const UsersLoader = (props) => {
 
   return (
     <div>
+      <h1>Clicks: {clicks}</h1>
       {isLoading && <div>LOADING ...</div>}
       {error && <div>Error</div>}
       {users.length > 0 && userList}
