@@ -45,5 +45,14 @@ export function useClicker() {
     };
   }, []);
 
+  // неоптимизированная версия
+  // useEffect(() => {
+  //   const clicksListener = () => setClicks(clicks + 1);
+  //   document.addEventListener('click', clicksListener);
+  //   return () => {
+  //     document.removeEventListener('click', clicksListener);
+  //   };
+  // }, [clicks]);
+
   return clicks;
 }
