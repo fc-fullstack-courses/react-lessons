@@ -32,7 +32,12 @@ const RefClicker = (props) => {
     console.log('handleChange created');
   }, [handleChange]);
 
-  const logValue = () => console.log(`value is ${value}`);
+  // const logValue = () => console.log(`value is ${value}`);
+  const logValue = useCallback(() => console.log(`value is ${value}`), [value]);
+
+  useEffect(() => {
+    console.log('logValue created');
+  }, [logValue]);
 
   return (
     <div id="test">
