@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import UsersLoader from 'components/UserLoaderHooks';
+import RefClicker from 'components/RefClicker';
 
 function App() {
   return (
     <>
-      <UsersLoader />
+      <RefClicker />
     </>
   );
 }
