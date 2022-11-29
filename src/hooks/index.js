@@ -37,11 +37,13 @@ export function useData(getData) {
 export function useClicker() {
   const [clicks, setClicks] = useState(0);
   const clicksListener = () => setClicks((clicksState) => clicksState + 1);
+
   useEffect(() => {
     document.addEventListener('click', clicksListener);
     return () => {
       document.removeEventListener('click', clicksListener);
     };
-  });
+  }, []);
+
   return clicks;
 }
