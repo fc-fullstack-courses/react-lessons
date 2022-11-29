@@ -34,16 +34,22 @@ export function useData(getData) {
   Создайте хук useClicker
   обработчик на клики вешайте на document
 */
-export function useClicker() {
+export function useClicker(elemRef) {
   const [clicks, setClicks] = useState(0);
   const clicksListener = () => setClicks((clicksState) => clicksState + 1);
 
   useEffect(() => {
-    document.addEventListener('click', clicksListener);
+    const elem = elemRef.current;
+
+    if (elem) {
+      elem.addEventListener('click', clicksListener);
+    }
     return () => {
-      document.removeEventListener('click', clicksListener);
+      if (elem) {
+        elem.removeEventListener('click', clicksListener);
+      }
     };
-  }, []);
+  }, [elemRef]);
 
   // неоптимизированная версия
   // useEffect(() => {
