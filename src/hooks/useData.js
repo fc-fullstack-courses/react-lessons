@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+
+export const data = 1234;
+
 /**
  *
  * @param {Function} getData
