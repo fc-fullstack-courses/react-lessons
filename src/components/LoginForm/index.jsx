@@ -3,10 +3,11 @@ import React, { useReducer } from 'react';
 function reducer(state, action) {
   // содержит логику изменения состояния
   // возвращает новое состояние
+  const { type, payload } = action;
   const newState = {
     ...state,
-    [action.name] : action.newData
-  }
+    [type]: payload,
+  };
 
   return newState;
 }
@@ -22,9 +23,7 @@ const LoginForm = (props) => {
 
   const handleChange = ({ target: { value, checked, name, type } }) => {
     const newData = type === 'checkbox' ? checked : value;
-
-    const action = { name, newData };
-    dispatch(action);
+    dispatch({ type: name, payload: newData });
   };
 
   return (
