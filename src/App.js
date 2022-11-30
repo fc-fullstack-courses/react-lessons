@@ -3,7 +3,8 @@ import './App.css';
 import HomePage from 'pages/HomePage';
 import { ThemeContext } from 'contexts';
 import CONSTANTS from 'constants.js';
-import RefClicker from 'components/RefClicker';
+import { Route, Switch } from 'react-router-dom';
+import LoginPage from 'pages/LoginPage';
 const { THEMES } = CONSTANTS;
 
 function App() {
@@ -11,8 +12,10 @@ function App() {
 
   return (
     <ThemeContext.Provider value={themeTuple}>
-      <HomePage />
-      <RefClicker />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/login" exact component={LoginPage} />
+      </Switch>
     </ThemeContext.Provider>
   );
 }

@@ -2,6 +2,7 @@ import Greeting from 'components/Greeting';
 import { ThemeContext } from 'contexts';
 import { useContext, useMemo, useState } from 'react';
 import CONSTANTS from 'constants.js';
+import RefClicker from 'components/RefClicker';
 const { THEMES } = CONSTANTS;
 
 function calculateNumber(num) {
@@ -42,6 +43,7 @@ function HomePage(props) {
         value={number}
         onChange={(e) => setNumber(+e.target.value)}
       />
+      <RefClicker />
     </main>
   );
 }
