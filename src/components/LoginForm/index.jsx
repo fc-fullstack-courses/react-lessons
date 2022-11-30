@@ -1,34 +1,51 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
+
+function reducer(state, action) {
+  // содержит логику изменения состояния
+  // возвращает новое состояние
+  const newState = {
+    ...state,
+    [action.name] : action.newData
+  }
+
+  return newState;
+}
+
+const initialState = {
+  email: '',
+  password: '',
+  isRemembering: false,
+};
 
 const LoginForm = (props) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isRemembering, setIsRemembering] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleChange = ({ target: { value, checked, name } }) => {
-    if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    } else if (name === 'isRemembering') {
-      setIsRemembering(checked);
-    }
+  const handleChange = ({ target: { value, checked, name, type } }) => {
+    const newData = type === 'checkbox' ? checked : value;
+
+    const action = { name, newData };
+    dispatch(action);
   };
 
   return (
     <form>
-      <input type="text" name="email" value={email} onChange={handleChange} />
+      <input
+        type="text"
+        name="email"
+        value={state.email}
+        onChange={handleChange}
+      />
       <input
         type="password"
         name="password"
-        value={password}
+        value={state.password}
         onChange={handleChange}
       />
       <label>
         <input
           type="checkbox"
           name="isRemembering"
-          checked={isRemembering}
+          checked={state.isRemembering}
           onChange={handleChange}
         />{' '}
         Remember me
