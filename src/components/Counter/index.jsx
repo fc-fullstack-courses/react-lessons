@@ -5,13 +5,20 @@ const initialState = {
   step: 1,
 };
 
+const ACTION_TYPES = {
+  INCREMENT: 'increment',
+  DECREMENT: 'decrement',
+  CHANGE_STEP: 'changeStep',
+  RESET: 'reset',
+};
+
 function reducer(state, action) {
   switch (action.type) {
-    case 'increment': {
+    case ACTION_TYPES.INCREMENT: {
       const newState = { ...state, count: state.count + state.step };
       return newState;
     }
-    case 'decrement': {
+    case ACTION_TYPES.DECREMENT: {
       const newCount = state.count - state.step;
 
       if (newCount > 0) {
@@ -20,11 +27,11 @@ function reducer(state, action) {
       }
       return state;
     }
-    case 'changeStep': {
+    case ACTION_TYPES.CHANGE_STEP: {
       const newState = { ...state, step: Math.abs(action.payload) };
       return newState;
     }
-    case 'reset': {
+    case ACTION_TYPES.RESET: {
       const newState = { ...initialState };
       return newState;
     }
@@ -37,10 +44,10 @@ const Counter = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleStep = ({ target: { value } }) =>
-    dispatch({ type: 'changeStep', payload: +value });
+    dispatch({ type: ACTION_TYPES.CHANGE_STEP, payload: +value });
 
-  const handleIncrement = () => dispatch({ type: 'increment' });
-  const handleDecrement = () => dispatch({ type: 'decrement' });
+  const handleIncrement = () => dispatch({ type: ACTION_TYPES.INCREMENT });
+  const handleDecrement = () => dispatch({ type: ACTION_TYPES.DECREMENT });
 
   return (
     <div>
@@ -51,7 +58,9 @@ const Counter = (props) => {
       </label>
       <button onClick={handleIncrement}>Increment</button>
       <button onClick={handleDecrement}>Decrement</button>
-      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+      <button onClick={() => dispatch({ type: ACTION_TYPES.RESET })}>
+        Reset
+      </button>
     </div>
   );
 };
