@@ -40,13 +40,22 @@ function reducer(state, action) {
   }
 }
 
+// action creator
+function increment() {
+  const action = { type: ACTION_TYPES.INCREMENT };
+  return action;
+}
+
+function changeStep(step) {
+  return { type: ACTION_TYPES.CHANGE_STEP, payload: +step };
+}
+
 const Counter = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleStep = ({ target: { value } }) =>
-    dispatch({ type: ACTION_TYPES.CHANGE_STEP, payload: +value });
+  const handleStep = ({ target: { value } }) => dispatch(changeStep(value));
 
-  const handleIncrement = () => dispatch({ type: ACTION_TYPES.INCREMENT });
+  const handleIncrement = () => dispatch(increment());
   const handleDecrement = () => dispatch({ type: ACTION_TYPES.DECREMENT });
 
   return (
