@@ -24,6 +24,10 @@ function reducer(state, action) {
       const newState = { ...state, step: Math.abs(action.payload) };
       return newState;
     }
+    case 'reset': {
+      const newState = { ...initialState };
+      return newState;
+    }
     default:
       return state;
   }
@@ -47,6 +51,7 @@ const Counter = (props) => {
       </label>
       <button onClick={handleIncrement}>Increment</button>
       <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
     </div>
   );
 };
