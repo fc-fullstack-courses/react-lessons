@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
+import { SIGN_UP_SCHEMA } from 'utils/validators/validationShemas';
 import styles from './SignUpForm.module.scss';
-import * as yup from 'yup';
-
-const SIGN_UP_SCHEMA = yup.object({
-  firstName: yup.string().min(1).required(),
-  lastName: yup.string().min(1).required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
-});
 
 const user1 = {
   email: 12345,
