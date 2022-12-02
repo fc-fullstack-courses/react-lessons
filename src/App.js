@@ -6,6 +6,7 @@ import CONSTANTS from 'constants.js';
 import { Route, Switch } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage';
 import CounterPage from 'pages/ClickerPage';
+import SignUpPage from 'pages/SignUpPage';
 const { THEMES } = CONSTANTS;
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/login" exact component={LoginPage} />
+        <Route path="/signup" exact component={SignUpPage} />
         <Route path="/counter" exact component={CounterPage} />
       </Switch>
     </ThemeContext.Provider>
