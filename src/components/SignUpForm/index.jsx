@@ -21,11 +21,15 @@ function SignUpForm(props) {
   };
 
   return (
-    <Formik initialValues={initialState} onSubmit={submitHandler}>
+    <Formik
+      initialValues={initialState}
+      onSubmit={submitHandler}
+      validationSchema={SIGN_UP_SCHEMA}
+    >
       <Form className={styles.form}>
-        <Field className={styles.input} type="text" name="name" />
-        <Field className={styles.input} type="email" name="email" />
-        <Field className={styles.input} type="password" name="password" />
+        <Field className={styles.input} type="text" name="name" placeholder="name"/>
+        <Field className={styles.input} type="email" name="email" placeholder="email" />
+        <Field className={styles.input} type="password" name="password" placeholder="password" />
         <Field as="select" name="accountLevel">
           <option value="basic">Basic</option>
           <option value="pro">Professional</option>
