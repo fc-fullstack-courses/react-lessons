@@ -4,8 +4,8 @@ import styles from './SignUpForm.module.scss';
 
 const user1 = {
   email: 12345,
-  password: 'truepass',
-  lastName: 'Test',
+  password: '465GF',
+  firstName: 'Test',
 };
 
 const user2 = {
