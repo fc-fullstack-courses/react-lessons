@@ -1,4 +1,4 @@
-import SignUpForm from 'components/SignUpForm';
+import SignUpForm from 'components/forms/SignUpForm';
 import React from 'react';
 
 const SignUpPage = (props) => {

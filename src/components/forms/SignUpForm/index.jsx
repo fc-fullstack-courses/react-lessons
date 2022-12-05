@@ -27,13 +27,7 @@ function SignUpForm(props) {
       validationSchema={SIGN_UP_SCHEMA}
     >
       <Form className={styles.form}>
-        <Field
-          className={styles.input}
-          type="text"
-          name="name"
-          placeholder="name"
-        />
-        <ErrorMessage name="name" component="div" />
+        <Field  className={styles.input} type="text" name="name" placeholder="name" />
         <Field
           className={styles.input}
           type="email"
