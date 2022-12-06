@@ -61,13 +61,15 @@ function sumOfThree(num1, num2, num3) {
 
 console.log(sumOfThree(3, 4, 5));
 
-function curriedSum(num1) {
-  return function inner1(num2) {
-    return function inner2(num3) {
-      return num1 + num2 + num3;
-    };
-  };
-}
+// function curriedSum(num1) {
+//   return function inner1(num2) {
+//     return function inner2(num3) {
+//       return num1 + num2 + num3;
+//     };
+//   };
+// }
+
+const curriedSum = (num1) => (num2) => (num3) => num1 + num2 + num3;
 
 const inner1 = curriedSum(3);
 const inner2 = inner1(4);
@@ -91,11 +93,12 @@ function curriedCalcCartCost(discount) {
   };
 }
 
-const with10PercentDiscount = curriedCalcCartCost(0.1);
+// const with10PercentDiscount = curriedCalcCartCost(0.1);
 
-const withPrice1000And10PercentDiscount = with10PercentDiscount(1000);
-const withPrice2000And10PercentDiscount = with10PercentDiscount(2000);
+// const withPrice1000And10PercentDiscount = with10PercentDiscount(1000);
+// const withPrice2000And10PercentDiscount = with10PercentDiscount(2000);
 
-// const res1 = withPrice1000And10PercentDiscount(5);
-const res1 = withPrice2000And10PercentDiscount(5);
+// // const res1 = withPrice1000And10PercentDiscount(5);
+// const res1 = withPrice2000And10PercentDiscount(5);
+const res1 = curriedCalcCartCost(0.1)(1000)(5);
 console.log(res1);
