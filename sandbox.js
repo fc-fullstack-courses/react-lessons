@@ -18,20 +18,19 @@ const fs = require('fs/promises');
 //   });
 
 async function test() {
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve(Promise.resolve(50)), 2000);
-  });
-
-  const p2 = promise.then((data) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Promise.resolve(50)), 2000);
+  try {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve(Promise.reject(50)), 2000);
     });
-  });
 
-  const data = await p2;
-  console.log(data);
+    const data = await promise;
+    throw new Error();
+    console.log(data);
+  } catch (error) {
+    console.log('error handled');
+  }
 }
-// test();
+test();
 
 async function logFiles() {
   // fs.readdir(__dirname)
@@ -46,5 +45,5 @@ async function logFiles() {
   console.log(hiddenFiles);
 }
 
-logFiles();
+// logFiles();
 // test().then((data) => console.log(data));
