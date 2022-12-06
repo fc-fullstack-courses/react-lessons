@@ -17,7 +17,7 @@ const fs = require('fs/promises');
 //     console.log(data);
 //   });
 
-const arr = async () => {}
+const arr = async () => {};
 
 async function test() {
   try {
@@ -44,8 +44,13 @@ async function logFiles() {
 
   const filesArr = await fs.readdir(__dirname);
   const hiddenFiles = filesArr.filter((fileName) => fileName[0] === '.');
-  console.log(hiddenFiles);
+
+  return hiddenFiles;
 }
+
+// технически разрешено
+// const names = await logFiles();
+// console.log(names);
 
 // logFiles();
 // test().then((data) => console.log(data));
