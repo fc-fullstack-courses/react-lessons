@@ -76,3 +76,26 @@ const res = inner2(5);
 const res2 = inner2(10);
 console.log(res);
 console.log(res2);
+
+function calcCartCost(discount, price, amount) {
+  return price * amount - price * amount * discount;
+}
+
+console.log(calcCartCost(0.1, 1000, 5));
+
+function curriedCalcCartCost(discount) {
+  return function (price) {
+    return function (amount) {
+      return price * amount - price * amount * discount;
+    };
+  };
+}
+
+const with10PercentDiscount = curriedCalcCartCost(0.1);
+
+const withPrice1000And10PercentDiscount = with10PercentDiscount(1000);
+const withPrice2000And10PercentDiscount = with10PercentDiscount(2000);
+
+// const res1 = withPrice1000And10PercentDiscount(5);
+const res1 = withPrice2000And10PercentDiscount(5);
+console.log(res1);
