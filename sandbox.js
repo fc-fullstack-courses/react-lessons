@@ -32,7 +32,7 @@ async function test() {
     console.log('error handled');
   }
 }
-test();
+// test();
 
 async function logFiles() {
   // fs.readdir(__dirname)
@@ -54,3 +54,25 @@ async function logFiles() {
 
 // logFiles();
 // test().then((data) => console.log(data));
+
+function sumOfThree(num1, num2, num3) {
+  return num1 + num2 + num3;
+}
+
+console.log(sumOfThree(3, 4, 5));
+
+function curriedSum(num1) {
+  return function inner1(num2) {
+    return function inner2(num3) {
+      return num1 + num2 + num3;
+    };
+  };
+}
+
+const inner1 = curriedSum(3);
+const inner2 = inner1(4);
+const res = inner2(5);
+
+const res2 = inner2(10);
+console.log(res);
+console.log(res2);
