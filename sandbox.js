@@ -17,6 +17,8 @@ const fs = require('fs/promises');
 //     console.log(data);
 //   });
 
+const arr = async () => {}
+
 async function test() {
   try {
     const promise = new Promise((resolve, reject) => {
